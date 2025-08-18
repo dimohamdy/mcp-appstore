@@ -6,7 +6,51 @@ Perfect for ASO (App Store Search Optimization).
 
 Built by [AppReply.co](https://appreply.co). For more information, see our [MCP documentation](https://appreply.co/docs/mcp-server/overview).
 
-## Installation
+## 🐳 Docker Installation (Recommended)
+
+The easiest way to use this MCP server is with Docker - no Node.js installation required!
+
+### Prerequisites
+- Docker installed on your system
+
+### Usage with Claude Desktop
+
+Add this configuration to your Claude Desktop config file:
+
+**macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`  
+**Windows:** `%APPDATA%/Claude/claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "mcp-appstore": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "dimohamdy/mcp-appstore:latest"
+      ]
+    }
+  }
+}
+```
+
+### Direct Usage
+
+```bash
+# Pull and run the MCP server
+docker run -it --rm dimohamdy/mcp-appstore:latest
+
+# Test with MCP Inspector
+npx @modelcontextprotocol/inspector docker run --rm -i dimohamdy/mcp-appstore:latest
+```
+
+---
+
+## 📦 Traditional Node.js Installation
+
+If you prefer to run without Docker:
 
 ```bash
 # Clone the repository
@@ -17,7 +61,7 @@ cd mcp-appstore
 npm install
 ```
 
-## Running the Server
+### Running the Server
 
 ```bash
 npm start
@@ -25,9 +69,9 @@ npm start
 
 This will start the server in studio mode, which is compatible with MCP clients.
 
-The launch command is
+### Traditional Launch Command
 
-```bash
+```json
 {
   "mcpServers": {
     "mcp-appstore": {
